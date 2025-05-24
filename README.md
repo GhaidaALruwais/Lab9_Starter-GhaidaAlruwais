@@ -48,3 +48,9 @@ This lab demonstrates various JavaScript error handling techniques and console m
 - Make sure to have the browser's developer console open to see the output of various console methods
 - The calculator implements proper error handling and validation
 - Custom error types are used to provide more specific error information
+
+## Link
+[GitHub Pages](https://ghaidaalruwais.github.io/Lab9_Starter-GhaidaAlruwais/)
+
+## screenshot of dash board
+![Dashboard Screenshot](images/dashboard.png)
