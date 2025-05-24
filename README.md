@@ -53,4 +53,4 @@ This lab demonstrates various JavaScript error handling techniques and console m
 [GitHub Pages](https://ghaidaalruwais.github.io/Lab9_Starter-GhaidaAlruwais/)
 
 ## screenshot of dash board
-![Dashboard Screenshot](images/dashboard.png)
+![Dashboard Screenshot](./dashboard.png)
