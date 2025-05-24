@@ -115,7 +115,7 @@ errorBtns.forEach(button => {
                 break;
 
             case 'console dir':
-                console.dir(document.querySelector('main'));
+                console.dir(e.target);
                 break;
 
             case 'console dirxml':
@@ -146,7 +146,19 @@ errorBtns.forEach(button => {
                 break;
 
             case 'console trace':
-                console.trace('Trace demo');
+                function firstFunction() {
+                    secondFunction();
+                }
+                
+                function secondFunction() {
+                    thirdFunction();
+                }
+                
+                function thirdFunction() {
+                    console.trace('Custom trace message');
+                }
+                
+                firstFunction();
                 break;
 
             case 'trigger a global error':
