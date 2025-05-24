@@ -1,4 +1,4 @@
-// Sample data for console demonstrations
+// Sample data 
 const sampleData = {
     name: 'John Doe',
     age: 30,
@@ -18,16 +18,22 @@ class CalculatorError extends Error {
     }
 }
 
-// Global error handler
+// Enhanced Global error handler with error reporting
 window.onerror = function(msg, url, lineNo, columnNo, error) {
-    console.error('Global error handler caught an error:', {
+    // Create error report object
+    const errorReport = {
         message: msg,
         url: url,
-        lineNo: lineNo,
-        columnNo: columnNo,
-        error: error
-    });
-    return false; // Let the error propagate
+        lineNumber: lineNo,
+        columnNumber: columnNo,
+        error: error ? error.stack : 'No error stack available',
+        userAgent: navigator.userAgent,
+        timestamp: new Date().toISOString()
+    };
+
+    console.error('Error Report:', errorReport);
+    
+    return false;
 };
 
 // Get form and error buttons
@@ -162,7 +168,23 @@ errorBtns.forEach(button => {
                 break;
 
             case 'trigger a global error':
-                nonExistentFunction(); // This will trigger a global error
+                // Trigger a reference error
+                try {
+                    // Deliberately cause different types of errors
+                    const errorTypes = [
+                        () => nonExistentFunction(), // ReferenceError
+                        () => null.property, // TypeError
+                        () => eval('{ invalid json }'), // SyntaxError
+                        () => new Error('Custom Error') // Custom Error
+                    ];
+                    
+                    // Pick a random error to throw
+                    const randomError = errorTypes[Math.floor(Math.random() * errorTypes.length)];
+                    randomError();
+                } catch (e) {
+                    // This won't catch the error since we want it to go to window.onerror
+                    throw e;
+                }
                 break;
         }
     });
